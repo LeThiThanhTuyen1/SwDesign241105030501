@@ -4,14 +4,14 @@
 Hệ thống phù hợp với kiến trúc phân lớp (Layered Architecture) vì tính chất rõ ràng giữa các tầng xử lý.
 
 Các tầng trong hệ thống:
-- Tầng trình bày (Presentation Layer): Xử lý tương tác người dùng (ví dụ: nhập bảng công, xem lương).
-- Tầng logic nghiệp vụ (Business Logic Layer): Tính toán lương, quản lý bảng công, xử lý thanh toán.
-- Tầng truy cập dữ liệu (Data Access Layer): Quản lý việc truy xuất dữ liệu từ cơ sở dữ liệu (ví dụ: thông tin nhân viên, lịch sử thanh toán).
-- Tầng cơ sở dữ liệu (Database Layer): Lưu trữ và truy xuất dữ liệu.
+  - Tầng trình bày (Presentation Layer): Xử lý tương tác người dùng (ví dụ: nhập bảng công, xem lương).
+  - Tầng logic nghiệp vụ (Business Logic Layer): Tính toán lương, quản lý bảng công, xử lý thanh toán.
+  - Tầng truy cập dữ liệu (Data Access Layer): Quản lý việc truy xuất dữ liệu từ cơ sở dữ liệu (ví dụ: thông tin nhân viên, lịch sử thanh toán).
+  - Tầng cơ sở dữ liệu (Database Layer): Lưu trữ và truy xuất dữ liệu.
 
 Giải thích:
-- Kiến trúc phân lớp cho phép phân tách các mối quan tâm, dễ bảo trì và mở rộng.
-- Mỗi tầng có thể được chỉnh sửa độc lập (ví dụ: thay đổi UI không ảnh hưởng đến logic tính lương).
+  - Kiến trúc phân lớp cho phép phân tách các mối quan tâm, dễ bảo trì và mở rộng.
+  - Mỗi tầng có thể được chỉnh sửa độc lập (ví dụ: thay đổi UI không ảnh hưởng đến logic tính lương).
 
 **Biểu đồ gói (Package Diagram)**
 
@@ -19,18 +19,18 @@ Giải thích:
 
 **2. Cơ chế phân tích**
 Các cơ chế phân tích giúp giải quyết các vấn đề phức tạp trong hệ thống. Một số cơ chế phân tích có thể áp dụng cho Payroll System là:
-- Persistency: Cơ chế lưu trữ dữ liệu như thông tin nhân viên, bảng chấm công, và thanh toán.
-- Transaction Management: Quản lý giao dịch để đảm bảo tính nhất quán trong quá trình thanh toán.
-- Security: Bảo mật dữ liệu liên quan đến lương và chấm công
-- Error Handling: Quản lý các lỗi phát sinh khi giao dịch không thành công.
-- Authentication and Authorization: Xác thực và phân quyền cho các thao tác khác nhau, ví dụ: chỉ quản lý có thể duyệt và sửa đổi phương thức thanh toán.
+  - Persistency: Cơ chế lưu trữ dữ liệu như thông tin nhân viên, bảng chấm công, và thanh toán.
+  - Transaction Management: Quản lý giao dịch để đảm bảo tính nhất quán trong quá trình thanh toán.
+  - Security: Bảo mật dữ liệu liên quan đến lương và chấm công
+  - Error Handling: Quản lý các lỗi phát sinh khi giao dịch không thành công.
+  - Authentication and Authorization: Xác thực và phân quyền cho các thao tác khác nhau, ví dụ: chỉ quản lý có thể duyệt và sửa đổi phương thức thanh toán.
 
 **3. Phân tích ca sử dụng Payment**
 Lớp phân tích cho ca sử dụng Payment:
-- Employee: Lớp chứa thông tin nhân viên.
-- Payment: Xử lý thanh toán lương cho nhân viên.
-- PayrollManager: Quản lý tính toán lương và xử lý thanh toán.
-- Database: Quản lý truy xuất và lưu trữ thông tin thanh toán.
+  - Employee: Lớp chứa thông tin nhân viên.
+  - Payment: Xử lý thanh toán lương cho nhân viên.
+  - PayrollManager: Quản lý tính toán lương và xử lý thanh toán.
+  - Database: Quản lý truy xuất và lưu trữ thông tin thanh toán.
 
 **Biểu đồ tuần tự (Sequence Diagram) cho "Payment"**
 
@@ -42,10 +42,10 @@ Lớp phân tích cho ca sử dụng Payment:
 
 **4. Phân tích ca sử dụng Maintain Timecard**
 Các lớp phân tích:
-- Timecard: Đại diện cho một bản ghi bảng công.
-- Employee: Nhân viên liên quan đến bảng công.
-- TimecardManager: Quản lý bảng công của nhân viên, xác thực giờ công.
-- Database: Lưu trữ thông tin bảng công.
+  - Timecard: Đại diện cho một bản ghi bảng công.
+  - Employee: Nhân viên liên quan đến bảng công.
+  - TimecardManager: Quản lý bảng công của nhân viên, xác thực giờ công.
+  - Database: Lưu trữ thông tin bảng công.
 
 **Biểu đồ tuần tự (Sequence Diagram) cho "Maintain Timecard":**
 
@@ -59,11 +59,11 @@ Các lớp phân tích:
 Employee là lớp trung tâm, chịu trách nhiệm quản lý và lưu trữ thông tin nhân viên. Lớp này tương tác trực tiếp với các lớp xử lý bảng chấm công và thanh toán, cụ thể là TimecardManager và PayrollManager. Cả hai thành phần này đều sử dụng chung các lớp liên quan đến lưu trữ dữ liệu như EmployeeRepository và Database.
 
 Các thành phần chính:
-- Employee: Chứa thông tin nhân viên và liên kết với các lớp quản lý bảng chấm công và thanh toán.
-- TimecardManager: Quản lý và cập nhật bảng chấm công cho nhân viên.
-- PayrollManager: Tính toán và xử lý thanh toán lương cho nhân viên.
-- EmployeeRepository: Lớp truy cập dữ liệu cho đối tượng Employee, hỗ trợ thao tác đọc/ghi từ cơ sở dữ liệu.
-- Database: Quản lý lưu trữ dữ liệu cho hệ thống, được dùng chung bởi các repository.
+  - Employee: Chứa thông tin nhân viên và liên kết với các lớp quản lý bảng chấm công và thanh toán.
+  - TimecardManager: Quản lý và cập nhật bảng chấm công cho nhân viên.
+  - PayrollManager: Tính toán và xử lý thanh toán lương cho nhân viên.
+  - EmployeeRepository: Lớp truy cập dữ liệu cho đối tượng Employee, hỗ trợ thao tác đọc/ghi từ cơ sở dữ liệu.
+  - Database: Quản lý lưu trữ dữ liệu cho hệ thống, được dùng chung bởi các repository.
 
 **Class diagram**
 
