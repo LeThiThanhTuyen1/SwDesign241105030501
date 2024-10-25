@@ -34,9 +34,9 @@ Các cơ chế phân tích giúp giải quyết các vấn đề phức tạp tr
 
 ## 3. Phân tích ca sử dụng Payment
 ### 1. Mô Tả Ca Sử Dụng "Payment"
-Tên ca sử dụng: Payment
-Diễn giả chính: Khách hàng
-Mô tả: Khách hàng thực hiện thanh toán cho đơn hàng của họ thông qua hệ thống. Hệ thống xử lý thanh toán và gửi thông báo cho khách hàng về trạng thái thanh toán.
+  - Tên ca sử dụng: Payment
+  - Diễn giả chính: Khách hàng
+  - Mô tả: Khách hàng thực hiện thanh toán cho đơn hàng của họ thông qua hệ thống. Hệ thống xử lý thanh toán và gửi thông báo cho khách hàng về trạng thái thanh toán.
 
 ### 2. Các Lớp Phân Tích
 Boundary Class: PaymentUI
@@ -60,14 +60,17 @@ Entity Class: Order
 PaymentUI:
   - Thu thập thông tin thanh toán từ khách hàng (số thẻ, ngày hết hạn, v.v.).
   - Hiển thị thông báo kết quả thanh toán cho khách hàng.
+
 PaymentController:
   - Nhận thông tin thanh toán từ PaymentUI.
   - Tương tác với lớp Order để lấy thông tin đơn hàng liên quan.
   - Tạo đối tượng Payment để lưu trữ thông tin thanh toán.
   - Xác nhận thanh toán và gửi kết quả về PaymentUI.
+
 Payment:
   - Chứa các thuộc tính như amount, paymentMethod, paymentStatus.
   - Cung cấp các phương thức để xác nhận thanh toán.
+
 Order:
   - Chứa các thuộc tính như orderId, customerId, totalAmount.
   - Cung cấp thông tin cần thiết cho việc thanh toán.
@@ -85,20 +88,23 @@ Payment:
 
 ## 4. Phân tích ca sử dụng Maintain Timecard
 ### 1. Mô Tả Ca Sử Dụng "Maintain Timecard"
-Tên ca sử dụng: Maintain Timecard
-Diễn giả chính: Nhân viên (Employee)
-Mô tả: Nhân viên có thể xem, thêm, sửa đổi và xóa thông tin thời gian làm việc của họ thông qua hệ thống. Hệ thống lưu trữ và quản lý thông tin thời gian làm việc cho các nhân viên.
+  - Tên ca sử dụng: Maintain Timecard
+  - Diễn giả chính: Nhân viên (Employee)
+  - Mô tả: Nhân viên có thể xem, thêm, sửa đổi và xóa thông tin thời gian làm việc của họ thông qua hệ thống. Hệ thống lưu trữ và quản lý thông tin thời gian làm việc cho các nhân viên.
 
 ### 2. Các Lớp Phân Tích
 Boundary Class: TimecardUI
   - Mô tả: Lớp này quản lý giao diện người dùng cho việc quản lý thời gian làm việc.
   - Nhiệm vụ: Hiển thị thông tin thời gian làm việc cho nhân viên và cho phép họ thêm, sửa đổi hoặc xóa thông tin.
+
 Control Class: TimecardController
   - Mô tả: Lớp này xử lý logic quản lý thời gian làm việc.
   - Nhiệm vụ: Điều phối các bước thực hiện thao tác với thông tin thời gian làm việc và tương tác giữa các lớp khác.
+
 Entity Class: Timecard
   - Mô tả: Lớp này đại diện cho thông tin thời gian làm việc của nhân viên.
   - Nhiệm vụ: Lưu trữ thông tin thời gian vào và ra của nhân viên, cùng với ngày tháng và trạng thái.
+
 Entity Class: Employee
   - Mô tả: Lớp này đại diện cho thông tin nhân viên.
   - Nhiệm vụ: Lưu trữ thông tin chi tiết của nhân viên, như ID, tên, và các thông tin liên quan khác.
@@ -126,17 +132,17 @@ Employee:
 ![Diagram](https://www.planttext.com/api/plantuml/png/j98nJiGm44Nxd69AA7A156Wbe4X50mUmub7MmXb7zWIqGXncaRP1GgAW8WL5fBr7Ji0Li9KrEAjb9GfSsFBJpFm_zdps7ml7mdBNwCpTAW9h76QL5ix1jMgm4bRUbF2GGLXt2kyZTIUd4nHIHXPHrqh1k4ybQfpHnsnFwTmGMwCrsgXO8_-du4ucnwRLPeLOoW8KyGH3oGB2FjtP9vLKG3X_o5N7AVAloPqhmB5LLF_HSD9jwlPov-weMn8DpcJprZZ5oj3SZDU8zIwGXT9kaaf-Ey_F3ds9hpFsBo37VkEB7GX8ytmqRr-tQwg1XtNrM_XtQmNeyNsp0buERo77Zo8jXoVoCpSyKxP0ac56lm000F__0m00)
 
 ### 6. Giải Thích Biểu Đồ Lớp
-TimecardUI: Chịu trách nhiệm giao tiếp với nhân viên để quản lý thông tin thời gian làm việc.
-TimecardController:Chịu trách nhiệm xử lý logic quản lý thời gian làm việc, bao gồm việc lấy, thêm, sửa đổi và xóa thông tin thời gian làm việc.
-Timecard: Lưu trữ các thông tin liên quan đến thời gian làm việc, bao gồm ID nhân viên, ngày, giờ vào, giờ ra và trạng thái. Cung cấp phương thức để quản lý thông tin thời gian.
-Employee: Lưu trữ thông tin chi tiết của nhân viên. Cung cấp phương thức để lấy thông tin liên quan đến nhân viên.
+  - TimecardUI: Chịu trách nhiệm giao tiếp với nhân viên để quản lý thông tin thời gian làm việc.
+  - TimecardController:Chịu trách nhiệm xử lý logic quản lý thời gian làm việc, bao gồm việc lấy, thêm, sửa đổi và xóa thông tin thời gian làm việc.
+  - Timecard: Lưu trữ các thông tin liên quan đến thời gian làm việc, bao gồm ID nhân viên, ngày, giờ vào, giờ ra và trạng thái. Cung cấp phương thức để quản lý thông tin thời gian.
+  - Employee: Lưu trữ thông tin chi tiết của nhân viên. Cung cấp phương thức để lấy thông tin liên quan đến nhân viên.
 
 ## 5. Hợp nhất kết quả phân tích
-Lớp Employee: Được sử dụng trong cả hai ca sử dụng "Maintain Timecard" và "Payment", do đó, chỉ có một lớp Employee duy nhất.
-Lớp TimecardUI và PaymentUI: Các lớp này quản lý giao diện cho các chức năng khác nhau của hai ca sử dụng.
-Lớp TimecardController và PaymentController: Các lớp điều khiển riêng biệt để xử lý logic cho hai ca sử dụng khác nhau.
-Lớp Timecard: Lưu trữ thông tin thời gian làm việc cho nhân viên.
-Lớp Payment: Lưu trữ thông tin về thanh toán cho nhân viên.
+  - Lớp Employee: Được sử dụng trong cả hai ca sử dụng "Maintain Timecard" và "Payment", do đó, chỉ có một lớp Employee duy nhất.
+  - Lớp TimecardUI và PaymentUI: Các lớp này quản lý giao diện cho các chức năng khác nhau của hai ca sử dụng.
+  - Lớp TimecardController và PaymentController: Các lớp điều khiển riêng biệt để xử lý logic cho hai ca sử dụng khác nhau.
+  - Lớp Timecard: Lưu trữ thông tin thời gian làm việc cho nhân viên.
+  - Lớp Payment: Lưu trữ thông tin về thanh toán cho nhân viên.
 
 Class diagram
 
