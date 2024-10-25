@@ -1,29 +1,36 @@
 **Tài liệu hợp nhất phân tích hệ thống Payroll System**
 
 **1. Kiến trúc đề xuất:**
-Hệ thống phù hợp với kiến trúc phân lớp (Layered Architecture) vì tính chất rõ ràng giữa các tầng xử lý.
+Kiến trúc 3 tầng (Three-tier architecture) là một trong những kiến trúc phổ biến và hiệu quả cho các hệ thống lớn như hệ thống tính lương (Payroll System). Kiến trúc này giúp phân tách rõ ràng giữa các thành phần, đảm bảo tính linh hoạt, bảo trì dễ dàng và khả năng mở rộng cao. Các thành phần chính trong kiến trúc bao gồm:
 
 Các tầng trong hệ thống:
-  - Tầng trình bày (Presentation Layer): Xử lý tương tác người dùng (ví dụ: nhập bảng công, xem lương).
-  - Tầng logic nghiệp vụ (Business Logic Layer): Tính toán lương, quản lý bảng công, xử lý thanh toán.
-  - Tầng truy cập dữ liệu (Data Access Layer): Quản lý việc truy xuất dữ liệu từ cơ sở dữ liệu (ví dụ: thông tin nhân viên, lịch sử thanh toán).
-  - Tầng cơ sở dữ liệu (Database Layer): Lưu trữ và truy xuất dữ liệu.
-
+  - Tầng giao diện (Presentation Layer): Đây là tầng người dùng tương tác trực tiếp với hệ thống thông qua các ứng dụng desktop, web hoặc mobile. Chức năng chính của tầng này là hiển thị thông tin, thu thập và xác thực dữ liệu nhập từ người dùng.
+  - Tầng xử lý nghiệp vụ (Business Logic Layer): Tầng này chứa các quy tắc và logic nghiệp vụ của hệ thống. Mọi logic liên quan đến tính lương, quản lý thẻ thời gian (timecard), chọn phương thức thanh toán đều được xử lý ở đây. Tầng này cũng đảm bảo tính nhất quán dữ liệu và thực hiện các kiểm tra nghiệp vụ.
+  - Tầng dữ liệu (Data Layer): Tầng này chịu trách nhiệm tương tác với cơ sở dữ liệu để lưu trữ và truy vấn thông tin nhân viên, thẻ thời gian, thanh toán và các bảng dữ liệu liên quan.
+Dữ liệu được quản lý một cách an toàn và toàn vẹn trong cơ sở dữ liệu.
+  - 
 Giải thích:
-  - Kiến trúc phân lớp cho phép phân tách các mối quan tâm, dễ bảo trì và mở rộng.
-  - Mỗi tầng có thể được chỉnh sửa độc lập (ví dụ: thay đổi UI không ảnh hưởng đến logic tính lương).
+  - Kiến trúc phân lớp cho phép phân tách các mối quan tâm, dễ bảo trì và mở rộng. Kiến trúc này có thể mở rộng thêm các dịch vụ khác (ví dụ: báo cáo, thống kê lương) mà không ảnh hưởng đến các phần còn lại.
+  - Kiến trúc 3 tầng cho phép tách biệt rõ ràng giữa giao diện, xử lý nghiệp vụ và lưu trữ dữ liệu. Điều này giúp tăng tính modular, dễ bảo trì và phát triển.
+  - Các lớp được tách biệt giúp bảo vệ dữ liệu quan trọng, giảm rủi ro bảo mật bằng cách hạn chế quyền truy cập trực tiếp đến cơ sở dữ liệu.
+  - Có thể dễ dàng thay đổi logic nghiệp vụ hoặc giao diện mà không ảnh hưởng đến dữ liệu, và ngược lại.
+  - Với kiến trúc phân tầng, các thành viên trong nhóm phát triển có thể tập trung vào các phần riêng biệt mà không ảnh hưởng đến nhau. Ví dụ, một lập trình viên frontend có thể làm việc ở tầng giao diện, trong khi một lập trình viên backend có thể tập trung vào tầng xử lý nghiệp vụ và cơ sở dữ liệu.
 
-**Biểu đồ gói (Package Diagram)**
+Ý nghĩa của từng thành phần trong kiến trúc:
+  - Presentation Layer (Tầng giao diện): Cung cấp giao diện người dùng để tương tác với hệ thống. Kiểm tra tính hợp lệ của dữ liệu người dùng nhập. Gửi yêu cầu đến tầng nghiệp vụ và nhận phản hồi để hiển thị.
+  - Business Logic Layer (Tầng xử lý nghiệp vụ): Thực hiện các quy tắc tính toán, logic nghiệp vụ liên quan đến quản lý nhân viên, tính lương và thanh toán. Quản lý logic xử lý liên quan đến thẻ thời gian (timecard), thanh toán và bảo mật thông tin nhân viên. Kiểm tra các điều kiện nghiệp vụ trước khi tương tác với dữ liệu.
+  - Data Layer (Tầng dữ liệu): Tương tác với cơ sở dữ liệu để lưu trữ thông tin nhân viên, thời gian làm việc, và thanh toán. Đảm bảo tính toàn vẹn và bảo mật cho dữ liệu. Trả về kết quả truy vấn cho tầng nghiệp vụ.
 
-![Package Diagram](https://www.planttext.com/api/plantuml/png/Z9CzJiD044PxdsAK2efSW0851898GGee762o7imgwrrhVr0ib8g2WbD4Y38Y1LLSK4JAFNm2hi0wi8co2XBkFFlDU-En_LLzTen5RLqkaYGn8ov1AqD9OhaL10Mo4MO4ASTCO-uZeTBNP4XQj5p97fQauJ41O0ADWTlk-iPVAJU5mBAFfLP271p-L8qRvjmEU4uCTRgkJfB9bdtg39TaJ4zbdCNmNzOLIX_LGSHGC2VGaZ_E_Ln1LMZ5F2bo1LOeHx0753prh9skVynzXXPFMEEBXpxF2w5AeXigbE5MwJAuChBXi2llr4RbC-5P6kn-sH0DnQfG3m8Q4tEMhXtfSalnhwZTFewNUGIjIrvNJnBiVLszW5ZDLrEPjK8ytfVFNzJLZCEmNhpA3DZoeqb7rAPppm9yys0va_TWrN8gjwvOydTxRpLtVj962jP_kRjJxEbfK9lzD7xjIXYxUl5c8QshTn3-wPzTA-cGJ9jVuXi00F__0m00)
+![Package Diagram](https://www.planttext.com/api/plantuml/png/R94nIyGm68Rt_8gNJdV3JQv7kQk1Konou2c2EeGQUk5wQKdIeOYJmys7epYAqw6h3N93nV-HN-1VCDqgDl11-F9-pyD7Vkn-eWrJfbndHA-4XCer9qQOZ2CIpZwK-Dew-uWJuUgzX55DdM248sStC4jdjp95C6ULohCCPvKsV1rWS83CsQTYI4Z1aXLBEOA5grzzTYPO3kh96ndWZi2Vg_4uOnLNOTXznMdw_Uxiim1jFcHwBGTpnJMNXXcHIyJjnF06J6DsVapk_vikdTqXRZuzQDaI2rmu-z8ZxGzwOLHg8RdMYFDK95rb5FSPgRDlY5j4sQDPgBB2eQjtHJVeDPGPreNJQGltMs4KUXE8Bt-ZKn1VVtfjY909bxVj1_u2003__mC0)
 
 **2. Cơ chế phân tích**
 Các cơ chế phân tích giúp giải quyết các vấn đề phức tạp trong hệ thống. Một số cơ chế phân tích có thể áp dụng cho Payroll System là:
-  - Persistency: Cơ chế lưu trữ dữ liệu như thông tin nhân viên, bảng chấm công, và thanh toán.
-  - Transaction Management: Quản lý giao dịch để đảm bảo tính nhất quán trong quá trình thanh toán.
-  - Security: Bảo mật dữ liệu liên quan đến lương và chấm công
-  - Error Handling: Quản lý các lỗi phát sinh khi giao dịch không thành công.
-  - Authentication and Authorization: Xác thực và phân quyền cho các thao tác khác nhau, ví dụ: chỉ quản lý có thể duyệt và sửa đổi phương thức thanh toán.
+  - Persistency: Đảm bảo rằng thông tin về nhân viên, thanh toán, và thời gian làm việc được lưu trữ an toàn, giúp hệ thống có thể phục hồi và truy xuất dữ liệu khi cần thiết.
+  - Communication (IPC and RPC): Cần thiết để các thành phần trong hệ thống có thể trao đổi dữ liệu một cách hiệu quả và chính xác, đảm bảo tính liên kết giữa các phần của hệ thống.
+  - Transaction Management: Quản lý giao dịch để đảm bảo tính nhất quán trong quá trình thanh toán. Đảm bảo tính toàn vẹn của dữ liệu, đặc biệt trong các tình huống giao dịch phức tạp, như khi tính toán lương và ghi nhận thời gian làm việc.
+  - Security: Đảm bảo thông tin nhân viên và các thanh toán được lưu trữ an toàn, chỉ có quyền truy cập từ những người có thẩm quyền. Đặc biệt quan trọng trong hệ thống tính lương, nơi chứa nhiều thông tin cá nhân và tài chính của nhân viên.
+  - Error Handling: Quản lý các lỗi phát sinh khi giao dịch không thành công. Giúp nâng cao độ tin cậy của hệ thống và cung cấp thông tin cần thiết để sửa chữa lỗi một cách nhanh chóng.
+  - Legacy interface: Đảm bảo rằng hệ thống mới có thể làm việc hiệu quả với các hệ thống cũ mà không gặp khó khăn, giúp giảm thiểu chi phí chuyển đổi và thời gian gián đoạn.
 
 **3. Phân tích ca sử dụng Payment**
 Lớp phân tích cho ca sử dụng Payment:
