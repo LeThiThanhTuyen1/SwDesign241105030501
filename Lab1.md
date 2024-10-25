@@ -42,12 +42,15 @@ Các cơ chế phân tích giúp giải quyết các vấn đề phức tạp tr
 Boundary Class: PaymentUI
   - Mô tả: Lớp này quản lý giao diện người dùng cho việc thực hiện thanh toán.
   - Nhiệm vụ: Thu thập thông tin thanh toán từ khách hàng và hiển thị kết quả thanh toán.
+
 Control Class: PaymentController
   - Mô tả: Lớp này xử lý logic thanh toán.
   - Nhiệm vụ: Điều phối các bước thực hiện thanh toán và tương tác giữa các lớp khác.
+
 Entity Class: Payment
   - Mô tả: Lớp này đại diện cho thông tin thanh toán.
   - Nhiệm vụ: Lưu trữ thông tin thanh toán, chẳng hạn như số tiền, phương thức thanh toán và trạng thái thanh toán.
+
 Entity Class: Order
   - Mô tả: Lớp này đại diện cho đơn hàng mà khách hàng đang thanh toán.
   - Nhiệm vụ: Lưu trữ thông tin chi tiết của đơn hàng.
@@ -117,12 +120,15 @@ Entity Class: Employee
 TimecardUI:
   - Hiển thị thông tin thời gian làm việc cho nhân viên.
   - Cung cấp giao diện để thêm, sửa đổi hoặc xóa thông tin thời gian làm việc.
+
 TimecardController:
   - Nhận yêu cầu từ TimecardUI và điều phối các thao tác cần thiết.
   - Tương tác với lớp Timecard để lấy, thêm, sửa đổi hoặc xóa thông tin thời gian làm việc.
+
 Timecard:
   - Chứa các thuộc tính như employeeId, date, timeIn, timeOut, status.
   - Cung cấp các phương thức để thêm, sửa đổi và lấy thông tin thời gian làm việc.
+
 Employee:
   - Chứa các thuộc tính như employeeId, name, position.
   - Cung cấp thông tin liên quan đến nhân viên để hỗ trợ việc quản lý thời gian làm việc.
