@@ -1,4 +1,4 @@
-# **Tài liệu hợp nhất phân tích hệ thống Payroll System
+# Tài liệu hợp nhất phân tích hệ thống Payroll System
 
 ## 1. Kiến trúc đề xuất:
 Kiến trúc 3 tầng (Three-tier architecture) là một trong những kiến trúc phổ biến và hiệu quả cho các hệ thống lớn như hệ thống tính lương (Payroll System). Kiến trúc này giúp phân tách rõ ràng giữa các thành phần, đảm bảo tính linh hoạt, bảo trì dễ dàng và khả năng mở rộng cao. Các thành phần chính trong kiến trúc bao gồm:
