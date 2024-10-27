@@ -96,6 +96,7 @@ Payment:
   - Mô tả: Nhân viên có thể xem, thêm, sửa đổi và xóa thông tin thời gian làm việc của họ thông qua hệ thống. Hệ thống lưu trữ và quản lý thông tin thời gian làm việc cho các nhân viên.
 
 2. Các Lớp Phân Tích
+
 Boundary Class: TimecardUI
   - Mô tả: Lớp này quản lý giao diện người dùng cho việc quản lý thời gian làm việc.
   - Nhiệm vụ: Hiển thị thông tin thời gian làm việc cho nhân viên và cho phép họ thêm, sửa đổi hoặc xóa thông tin.
