@@ -1,6 +1,7 @@
 # Tài liệu hợp nhất phân tích hệ thống Payroll System
 
 ## 1. Kiến trúc đề xuất:
+
 Kiến trúc 3 tầng (Three-tier architecture) là một trong những kiến trúc phổ biến và hiệu quả cho các hệ thống lớn như hệ thống tính lương (Payroll System). Kiến trúc này giúp phân tách rõ ràng giữa các thành phần, đảm bảo tính linh hoạt, bảo trì dễ dàng và khả năng mở rộng cao. Các thành phần chính trong kiến trúc bao gồm:
 
 Các tầng trong hệ thống:
@@ -24,6 +25,7 @@ Giải thích:
 ![Package Diagram](https://www.planttext.com/api/plantuml/png/R94nIyGm68Rt_8gNJdV3JQv7kQk1Konou2c2EeGQUk5wQKdIeOYJmys7epYAqw6h3N93nV-HN-1VCDqgDl11-F9-pyD7Vkn-eWrJfbndHA-4XCer9qQOZ2CIpZwK-Dew-uWJuUgzX55DdM248sStC4jdjp95C6ULohCCPvKsV1rWS83CsQTYI4Z1aXLBEOA5grzzTYPO3kh96ndWZi2Vg_4uOnLNOTXznMdw_Uxiim1jFcHwBGTpnJMNXXcHIyJjnF06J6DsVapk_vikdTqXRZuzQDaI2rmu-z8ZxGzwOLHg8RdMYFDK95rb5FSPgRDlY5j4sQDPgBB2eQjtHJVeDPGPreNJQGltMs4KUXE8Bt-ZKn1VVtfjY909bxVj1_u2003__mC0)
 
 ## 2. Cơ chế phân tích
+
 Các cơ chế phân tích giúp giải quyết các vấn đề phức tạp trong hệ thống. Một số cơ chế phân tích có thể áp dụng cho Payroll System là:
   - Persistency: Đảm bảo rằng thông tin về nhân viên, thanh toán, và thời gian làm việc được lưu trữ an toàn, giúp hệ thống có thể phục hồi và truy xuất dữ liệu khi cần thiết.
   - Communication (IPC and RPC): Cần thiết để các thành phần trong hệ thống có thể trao đổi dữ liệu một cách hiệu quả và chính xác, đảm bảo tính liên kết giữa các phần của hệ thống.
@@ -39,6 +41,7 @@ Các cơ chế phân tích giúp giải quyết các vấn đề phức tạp tr
   - Mô tả: Khách hàng thực hiện thanh toán cho đơn hàng của họ thông qua hệ thống. Hệ thống xử lý thanh toán và gửi thông báo cho khách hàng về trạng thái thanh toán.
 
 2. Các Lớp Phân Tích
+
 Boundary Class: PaymentUI
   - Mô tả: Lớp này quản lý giao diện người dùng cho việc thực hiện thanh toán.
   - Nhiệm vụ: Thu thập thông tin thanh toán từ khách hàng và hiển thị kết quả thanh toán.
@@ -60,6 +63,7 @@ Entity Class: Order
 ![Sequence Diagram](https://www.planttext.com/api/plantuml/png/Z98nJiD044NxFSMKK7012XGf1I0Xe029rh6js8ez2-inaaj4IPKRO4MKaIYel4KAeznZJi0LcCLnx28cAMTttf__P_V7haOPUORoD57PB4OmEWkLvvCsCCupqcber4Jd67YcW5klI4Ea-qlbQoIZa_Pat9I9D4iLqxQrBMzC87UgbOIJiquCJk4wuchv21JLNpW54XyKUHW1wRh4esFLzNPWDrC4pjakuxry3n6TFq_2Nd7rKVJPx_cwH8ZgTvmAsxGDpBqpN2tWcUtBiC3EuPj39y5LgGLXEvS4wq-s2oUpo_-GYuUwz07T3WyAtj_yHSpsrL5its36rOhWANUP_dc0xIkA-IRqf9O8m_GenC3zi5y0003__mC0)
 
 4. Nhiệm Vụ của Từng Lớp Phân Tích
+
 PaymentUI:
   - Thu thập thông tin thanh toán từ khách hàng (số thẻ, ngày hết hạn, v.v.).
   - Hiển thị thông báo kết quả thanh toán cho khách hàng.
@@ -83,10 +87,10 @@ Order:
 ![Class Diagram](https://www.planttext.com/api/plantuml/png/T94zJiGm48NxdC8b5Bb02hG8cYqG2CG1BDiRBEoPo3CkLeZ3fA14eYO51TBU8oVW2ZZ48Sh-kFDyC-yzZt-whnMn31ozA-ZPWWX8fb1E4eaxkVK6-74jNWen70jDv5ozDYojexFp4MbBZPFR3EyDHSU9lHPBhIi43kYS2PDc4r0PeimdkThmRT0cp2xxIdc-b1uZS2Ks3YMFfMRik37yXBeInC52lK0FB3dI0Wc5iB71pq7-7V-IJ7uuNDP9raAsKv4O_LwHaQMxFCXs_67peilouiYgKj2-UnUwxzvIsaC-J8qXAy6xZrqBjU3lLfredJQOcllF5ekL0Jty_oy0003__mC0)
 
 Giải Thích Biểu Đồ Lớp
+
   - PaymentUI: Chịu trách nhiệm giao tiếp với người dùng để thu thập thông tin thanh toán và hiển thị kết quả.
   - PaymentController: Chịu trách nhiệm xử lý logic thanh toán. Nó tương tác với Order để lấy thông tin cần thiết và với Payment để lưu trữ thông tin thanh toán.
-Payment:
-  - Lưu trữ các thông tin liên quan đến thanh toán, bao gồm số tiền, phương thức thanh toán và trạng thái thanh toán. Nó cung cấp phương thức để xác nhận thanh toán.
+  - Payment: Lưu trữ các thông tin liên quan đến thanh toán, bao gồm số tiền, phương thức thanh toán và trạng thái thanh toán. Nó cung cấp phương thức để xác nhận thanh toán.
   - Order: Chứa thông tin về đơn hàng mà khách hàng đang thanh toán. Nó cung cấp phương thức để lấy thông tin chi tiết về đơn hàng.
 
 ## 4. Phân tích ca sử dụng Maintain Timecard
@@ -118,6 +122,7 @@ Entity Class: Employee
 ![Diagram](https://www.planttext.com/api/plantuml/png/f9DFIWCn5CRtESLRseKNS2658YguZ52Nqqpe1FEdP3A5MHONBZo222qYGg4xLvE5Yvma9_0APWoTPZDsq5qItlVxllSU-RAVuz9asbI2e_AUIT2gf2WZHccu40kkQahHJ5KoptGDc0bACftVNYEYfD6ATq-JUETK8oeDCuVY_Rt3eVq9JiyJ99p1b0emXRSl3EOiay3TMi2IUVj8JaOeAKs41-C0k7FR2eXltgl0SHzo3YRqb20JJ29CS05ouvkt-hY-DmJMldc5fRUhluRu6SPLwFiXwfwEW-9GkiaEbVVl0XTk-yzjN7gxOptU8BnzPaFMWNspKKCflLccRaD05hxPjO3Gsh0bu6WxSp72MXP0sfVV9Zy99elePPBSGJAcCcz_sZS0003__mC0)
 
 4. Nhiệm Vụ của Từng Lớp Phân Tích
+
 TimecardUI:
   - Hiển thị thông tin thời gian làm việc cho nhân viên.
   - Cung cấp giao diện để thêm, sửa đổi hoặc xóa thông tin thời gian làm việc.
