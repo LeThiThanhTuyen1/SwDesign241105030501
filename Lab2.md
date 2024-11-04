@@ -46,6 +46,50 @@ Report (R)
   - Create report: Nhận thông tin từ ReportService và tạo báo cáo theo các tiêu chí đã cung cấp (loại báo cáo, ngày tháng, danh sách nhân viên).
   - Return generated report: Trả báo cáo đã tạo lại cho ReportService.
 
+5. Biểu đồ lớp
+
+a) Các lớp phân tích và nhiệm vụ của từng lớp
+
+AdminReportUI:
+  - Nhiệm vụ: Đây là lớp giao diện, tương tác trực tiếp với người dùng để yêu cầu nhập tiêu chí báo cáo và khởi tạo yêu cầu tạo báo cáo từ AdminReportController. Lớp này cũng cho phép người dùng lưu báo cáo.
+  - Phương thức:
+    + generateReport(): Yêu cầu tạo báo cáo từ AdminReportController.
+    + saveReport(location: String): Lưu báo cáo vào vị trí do người dùng chỉ định.
+
+AdminReportController:
+  - Nhiệm vụ: Đây là lớp điều khiển, chịu trách nhiệm quản lý quá trình tạo báo cáo, yêu cầu và lấy dữ liệu từ các lớp liên quan (như Employee và Project). Nó cũng xử lý logic lưu báo cáo.
+  - Phương thức:
+      + requestReport(criteria: ReportCriteria): Nhận yêu cầu từ AdminReportUI và tạo báo cáo dựa trên tiêu chí từ ReportCriteria.
+      + saveReport(report: Report, location: String): Lưu báo cáo được tạo vào vị trí chỉ định.
+
+Report:
+  - Nhiệm vụ: Lớp này đại diện cho báo cáo thực tế, bao gồm các loại báo cáo khác nhau (như giờ làm, nghỉ phép, lương, v.v.) cùng các phương thức để tạo và lấy dữ liệu báo cáo.
+  - Phương thức:
+    + generate(): Tạo báo cáo dựa trên dữ liệu có sẵn và tiêu chí nhận được từ ReportCriteria.
+    + getData(): Trả về dữ liệu báo cáo để hiển thị hoặc lưu.
+
+ReportCriteria:
+  - Nhiệm vụ: Lớp này lưu trữ tiêu chí báo cáo, chẳng hạn như loại báo cáo, ngày bắt đầu và kết thúc. Nó giúp AdminReportController có thể xác định rõ ràng thông tin cần để tạo báo cáo.
+  - Thuộc tính: reportType, startDate, endDate.
+
+Project:
+  - Nhiệm vụ: Lớp này đại diện cho một dự án, bao gồm các thuộc tính liên quan đến mã số dự án và cung cấp danh sách các số mã (charge numbers) liên quan đến dự án để báo cáo về dự án.
+  - Phương thức:
+    + getChargeNumbers(): Cung cấp danh sách mã chi phí liên quan đến dự án nếu báo cáo yêu cầu dữ liệu về dự án.
+
+Employee:
+  - Nhiệm vụ: Đại diện cho nhân viên, bao gồm thông tin về thời gian làm việc, ngày nghỉ phép, tiền lương, và phương thức để tạo báo cáo dựa trên yêu cầu của AdminReportController.
+  - Phương thức:
+    + generateReport(reportType: String, startDate: Date, endDate: Date): Tạo báo cáo cho nhân viên dựa trên loại báo cáo và khoảng thời gian.
+   
+b) Quan hệ giữa các lớp
+  - AdminReportUI — AdminReportController: AdminReportUI là giao diện người dùng sẽ gửi yêu cầu tạo báo cáo đến AdminReportController.
+  - AdminReportController — Report: AdminReportController quản lý quá trình tạo báo cáo bằng cách lấy và cung cấp dữ liệu từ các lớp khác (như Employee và Project) dựa trên tiêu chí của ReportCriteria.
+  - ReportCriteria — Report: ReportCriteria chứa thông tin về loại báo cáo và khoảng thời gian, được sử dụng trong lớp Report để tạo báo cáo chính xác.
+  - AdminReportController — Project và Employee: AdminReportController truy vấn dữ liệu từ Project và Employee dựa trên loại báo cáo yêu cầu để tổng hợp thông tin cho báo cáo.
+
+c) Biểu đồ lớp phân tích
+![](https://www.planttext.com/api/plantuml/png/h5HBJiCm4Dtd55usgBr0XAgY5aIbgggW2B4SaY6O9dOOEvKYnCbOS2IkW5t7WJYqAx98DCypRtxF-Vhud2aDfEkoYDIE2qPIOPGMe1Ixo4ekRh2IfE-Mx2rYzibH8856XuzYXohOUwIGAMWkHS9kDN6Hnz5xD2ISIw595WMI9oPyhL7fbYKbhf4u9AprR-rXFZfylD-OdSZlN7uIMclRLEXTMsuxZuLfCM7sxK0KMGXbe4rvAwxqkGkVzYVaPvEZPOFHe13VqpyKr35lIBvWslLOENEPzHbRU0rbaChKEdy6od5Tbuz8QXG77NQ9Bikga0sYpuIj7QRIKaDnBMjIzv9sQ4wl2WdQ7Ux1xMe1ZKhOKhImukbkXMR50NxWsa3pW41RwTh_nHP8SpZESJZASN-CiLUHRREl_ibaUaI-YLUkYlvsiA6jyX9MWe0SJxdw3LfUKpNkKHsaTYAasyKW9X1QhnH_nTYJfD3nR38vscwjJFtHp4pE_ZI-0G00__y30000)
 # Phân tích ca sử dụng Create Employee Report. 
 1. Mô tả ngắn gọn
 
