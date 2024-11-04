@@ -1,8 +1,9 @@
-##I. Phân tích ca sử dụng Create Administrative Report
-#1. Mô tả ngắn gọn
+# Phân tích ca sử dụng Create Administrative Report
+1. Mô tả ngắn gọn#
 
 Ca sử dụng Create Administrative Report cho phép Payroll Administrator tạo báo cáo quản trị dựa trên các tiêu chí về giờ làm việc hoặc tổng thu nhập năm cho nhân viên.
-#2. Xác định các lớp
+
+2. Xác định các lớp
 
 Boundary Classes:
   - PaymentSelectionUI: giao diện cho người dùng chọn hình thức thanh toán.
@@ -12,9 +13,11 @@ Entity Classes:
   - PaymentMethod: lớp chứa các phương thức thanh toán.
   - Employee: thực thể chứa thông tin về nhân viên (để liên kết thanh toán với nhân viên cụ thể).
   - Payment: thực thể chứa thông tin thanh toán cụ thể (tiền lương, hình thức thanh toán).
-#3. Biểu đồ tuần tự
+
+3. Biểu đồ tuần tự
 [!Sequence Diagram](https://www.planttext.com/api/plantuml/png/T9DDJeH048NtVOfQQZ9Um8MP2IPcDeP0vW0jNMh7fXkh2mndS-6Hl8B5xxGuie3GttklVWZVdr_xo9guhPsARzO3XOXALnm8SjrJSEvWQkjjPDB3eOwG7zHJQBtHr4E1JI0kyBt5oAVZW4z7LGNFOfrfDhqv7Dr5fj2pvSLR8dMsmX6Llz5ufbH-W9ixYOLRc0i11wW8DIFGg5H2HIFAisOYehECP3LSST_W3eouuWwmRbpe4UDrcfzJwAp1hNUEBpAHbEZD7ovauANm1_H8IMToE20XMTenV5X-XMQgPvAaDQX0Rid3ovndDe7PMRA0R9tZtiR6wNuXIZk6KdThKo3NvRN6ZUh2OhskvNF95boeDDlWjt7B5YyBjxjCAifZB37gafqchOyzDbZPPuj9i0HDKyhabIRppw2Fwu3dEaa_6_CGkfVRy7Fy0000__y30000)
-#4. Các hành vi cảu từng lớp
+
+4. Các hành vi cảu từng lớp
 
 PayrollAdministrator (PA)
   - Request to create report: PA yêu cầu hệ thống tạo một báo cáo.
@@ -43,4 +46,5 @@ Report (R)
   - Create report: Nhận thông tin từ ReportService và tạo báo cáo theo các tiêu chí đã cung cấp (loại báo cáo, ngày tháng, danh sách nhân viên).
   - Return generated report: Trả báo cáo đã tạo lại cho ReportService.
 
-##II. 
+# Phân tích ca sử dụng Create Employee Report. 
+1. 
