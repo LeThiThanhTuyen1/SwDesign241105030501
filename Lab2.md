@@ -1,5 +1,5 @@
 # Phân tích ca sử dụng Create Administrative Report
-1. Mô tả ngắn gọn#
+1. Mô tả ngắn gọn
 
 Ca sử dụng Create Administrative Report cho phép Payroll Administrator tạo báo cáo quản trị dựa trên các tiêu chí về giờ làm việc hoặc tổng thu nhập năm cho nhân viên.
 
@@ -15,7 +15,7 @@ Entity Classes:
   - Payment: thực thể chứa thông tin thanh toán cụ thể (tiền lương, hình thức thanh toán).
 
 3. Biểu đồ tuần tự
-[!Sequence Diagram](https://www.planttext.com/api/plantuml/png/T9DDJeH048NtVOfQQZ9Um8MP2IPcDeP0vW0jNMh7fXkh2mndS-6Hl8B5xxGuie3GttklVWZVdr_xo9guhPsARzO3XOXALnm8SjrJSEvWQkjjPDB3eOwG7zHJQBtHr4E1JI0kyBt5oAVZW4z7LGNFOfrfDhqv7Dr5fj2pvSLR8dMsmX6Llz5ufbH-W9ixYOLRc0i11wW8DIFGg5H2HIFAisOYehECP3LSST_W3eouuWwmRbpe4UDrcfzJwAp1hNUEBpAHbEZD7ovauANm1_H8IMToE20XMTenV5X-XMQgPvAaDQX0Rid3ovndDe7PMRA0R9tZtiR6wNuXIZk6KdThKo3NvRN6ZUh2OhskvNF95boeDDlWjt7B5YyBjxjCAifZB37gafqchOyzDbZPPuj9i0HDKyhabIRppw2Fwu3dEaa_6_CGkfVRy7Fy0000__y30000)
+![Sequence Diagram](https://www.planttext.com/api/plantuml/png/T9DDJeH048NtVOfQQZ9Um8MP2IPcDeP0vW0jNMh7fXkh2mndS-6Hl8B5xxGuie3GttklVWZVdr_xo9guhPsARzO3XOXALnm8SjrJSEvWQkjjPDB3eOwG7zHJQBtHr4E1JI0kyBt5oAVZW4z7LGNFOfrfDhqv7Dr5fj2pvSLR8dMsmX6Llz5ufbH-W9ixYOLRc0i11wW8DIFGg5H2HIFAisOYehECP3LSST_W3eouuWwmRbpe4UDrcfzJwAp1hNUEBpAHbEZD7ovauANm1_H8IMToE20XMTenV5X-XMQgPvAaDQX0Rid3ovndDe7PMRA0R9tZtiR6wNuXIZk6KdThKo3NvRN6ZUh2OhskvNF95boeDDlWjt7B5YyBjxjCAifZB37gafqchOyzDbZPPuj9i0HDKyhabIRppw2Fwu3dEaa_6_CGkfVRy7Fy0000__y30000)
 
 4. Các hành vi cảu từng lớp
 
@@ -47,4 +47,30 @@ Report (R)
   - Return generated report: Trả báo cáo đã tạo lại cho ReportService.
 
 # Phân tích ca sử dụng Create Employee Report. 
+1. Mô tả ngắn gọn
+Nhân viên có thể tạo các loại báo cáo như "Tổng giờ làm việc," "Tổng giờ làm việc cho một dự án," "Nghỉ phép/Bệnh," hoặc "Tổng lương đến hiện tại trong năm." Báo cáo này có thể được lưu lại nếu nhân viên yêu cầu.
+2. Các Lớp Phân Tích
+  - Boundary Class: ReportUI
+  - Control Class: ReportController
+  - Entity Class: Report
+  - Entity Class: Project
+3. Biểu đồ tuần tự
+![](https://www.planttext.com/api/plantuml/png/Z5JDZjCm4BxxAKOzB-BU0rffGS0540LndjeJhNSTJnXFYl9i77WaNW4xZTjGqf8UglnyFpFVZFFxvw_xf2ZQjy6aPnz1E951gopmfkq23qHcptrqA0Dyfev5lxutbgCAX-d1m_4ka1YAwhK2wzqduIUoQanLX1UlJbfRs9K2OFCWX4edrmcmCHLOIFNbjcYsdKAJwvGH05QyadYyuf891--eedNew0x6ti5btpkWwCOhWq4dteW2ds3pXHK3lEDU4dnZUIOtMcFjRMCW_-QbNaQppK--zvGKy80-u3uGT4SoM7QKPWfdLb6QB8g0YgV34c_2N3FMNk9AjtDYhttg0WuBl2jpf51WS_YAL7ObzpHISwX_aVCRiu9yEV_hNMtXBKMIicOJAGySOOyfMtEybBYPvapWXkCynxfvV3vPoq5-xDJdQZ8muQ6MEgxb2MyVEH_KL37_vBnuK1gVTovYIu0vji0MYy-DYTOpSuEuRkLdVS0Fhu-ZsCi5eUMfxMRqSMAbxOwiRpmjrhDSJRvklBHLgHJbLfo33wo-6SuHSGEfjvPIQlfmZ9z2cdsv7EV9HDR_ZMOIhetvP55SBgdi_Nt-An_bFm000F__0m00)
+4. Nhiệm vụ của từng lớp
+Employee (Nhân viên)
+  - Tương tác với giao diện người dùng để khởi tạo yêu cầu tạo báo cáo, cung cấp các tiêu chí cho báo cáo, và chọn lưu báo cáo nếu cần.
+ReportUI (Lớp giao diện người dùng)
+  - Thu thập thông tin tiêu chí báo cáo từ nhân viên, bao gồm loại báo cáo, ngày bắt đầu, ngày kết thúc và mã dự án (nếu cần).
+  - Hiển thị báo cáo cho nhân viên và cung cấp tùy chọn lưu báo cáo.
+  - Xác nhận tên và vị trí lưu báo cáo khi nhân viên chọn lưu.
+ReportController (Lớp xử lý)
+  - Xử lý và điều phối quy trình tạo báo cáo.
+  - Gửi yêu cầu đến lớp Project để lấy danh sách mã dự án nếu loại báo cáo cần mã dự án.
+  - Gửi yêu cầu đến lớp Report để tạo báo cáo dựa trên tiêu chí được cung cấp và lưu trữ báo cáo nếu nhân viên chọn lưu.
+Project (Lớp thực thể dự án)
+  - Cung cấp danh sách mã dự án từ Cơ sở Dữ liệu Quản lý Dự án, để hỗ trợ việc tạo báo cáo "Total Hours Worked for a Project".
+Report (Lớp thực thể báo cáo)
+  - Tạo dữ liệu báo cáo dựa trên tiêu chí được cung cấp từ ReportController.
+  - Lưu báo cáo đến tên và vị trí được chỉ định khi ReportController yêu cầu lưu.
+# Phân tích ca sử dụng Maintain Employee Information 
 1. 
