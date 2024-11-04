@@ -211,6 +211,7 @@ b) Quan hệ giữa các lớp
   - PayrollAdministrator sử dụng EmployeeUI để chọn chức năng (thêm, cập nhật, hoặc xóa).
   - EmployeeUI tương tác với EmployeeManager để thực hiện chức năng đã chọn và yêu cầu thêm thông tin   - từ lớp Employee khi cần.
   - EmployeeManager trực tiếp quản lý dữ liệu trong Employee, thực hiện các thao tác thêm, cập nhật hoặc xóa.
+
 c) Biểu đồ lớp phân tích
 ![](https://www.planttext.com/api/plantuml/png/X5D1JiCm4Bpx5Nk4GpyGeQf81QaI84JX0TjusreuTl2kGH7YPHnu4b_0QPCsk2taaCFCP7TsT_Bz-JLXmI2niegVZOFWcLHfaHdkiGdUsajT6MTO0eeFyAuWFIF08JgR5c2ST9J3YWgOIp1kjO40c2oLSXrTASQxi_C2NhtHwaDrhQwgslg6w1OThcZVXJhy9dKge7rVzD9nLngrxg5TtIqJQur29qYT71qX3nmTMFbdrhtmiQbpAdaDn9oXx4k3Tavb34QQkrWjA6IIUkqT7MKOBOQc0EtZmb87hdqCjdb8q_yY05Oa_M0pj_JPJlW4Ux2KfzbkBTlBakvlczapheuoHS4i4DfmRR7vmmmveT3pROMCBxrRcb1DspjccJeQtD5eFFI_EI85B8NXpSXQ3RYXj4za0O5U8d6IusPGLhba-5dILnkO8OKGbPgGq-rFzWC00F__0m00)
 
