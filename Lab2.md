@@ -48,6 +48,7 @@ Report (R)
 
 # Phân tích ca sử dụng Create Employee Report. 
 1. Mô tả ngắn gọn
+
 Nhân viên có thể tạo các loại báo cáo như "Tổng giờ làm việc," "Tổng giờ làm việc cho một dự án," "Nghỉ phép/Bệnh," hoặc "Tổng lương đến hiện tại trong năm." Báo cáo này có thể được lưu lại nếu nhân viên yêu cầu.
 2. Các Lớp Phân Tích
   - Boundary Class: ReportUI
@@ -57,20 +58,58 @@ Nhân viên có thể tạo các loại báo cáo như "Tổng giờ làm việc
 3. Biểu đồ tuần tự
 ![](https://www.planttext.com/api/plantuml/png/Z5JDZjCm4BxxAKOzB-BU0rffGS0540LndjeJhNSTJnXFYl9i77WaNW4xZTjGqf8UglnyFpFVZFFxvw_xf2ZQjy6aPnz1E951gopmfkq23qHcptrqA0Dyfev5lxutbgCAX-d1m_4ka1YAwhK2wzqduIUoQanLX1UlJbfRs9K2OFCWX4edrmcmCHLOIFNbjcYsdKAJwvGH05QyadYyuf891--eedNew0x6ti5btpkWwCOhWq4dteW2ds3pXHK3lEDU4dnZUIOtMcFjRMCW_-QbNaQppK--zvGKy80-u3uGT4SoM7QKPWfdLb6QB8g0YgV34c_2N3FMNk9AjtDYhttg0WuBl2jpf51WS_YAL7ObzpHISwX_aVCRiu9yEV_hNMtXBKMIicOJAGySOOyfMtEybBYPvapWXkCynxfvV3vPoq5-xDJdQZ8muQ6MEgxb2MyVEH_KL37_vBnuK1gVTovYIu0vji0MYy-DYTOpSuEuRkLdVS0Fhu-ZsCi5eUMfxMRqSMAbxOwiRpmjrhDSJRvklBHLgHJbLfo33wo-6SuHSGEfjvPIQlfmZ9z2cdsv7EV9HDR_ZMOIhetvP55SBgdi_Nt-An_bFm000F__0m00)
 4. Nhiệm vụ của từng lớp
+
 Employee (Nhân viên)
   - Tương tác với giao diện người dùng để khởi tạo yêu cầu tạo báo cáo, cung cấp các tiêu chí cho báo cáo, và chọn lưu báo cáo nếu cần.
+
 ReportUI (Lớp giao diện người dùng)
   - Thu thập thông tin tiêu chí báo cáo từ nhân viên, bao gồm loại báo cáo, ngày bắt đầu, ngày kết thúc và mã dự án (nếu cần).
   - Hiển thị báo cáo cho nhân viên và cung cấp tùy chọn lưu báo cáo.
   - Xác nhận tên và vị trí lưu báo cáo khi nhân viên chọn lưu.
+
 ReportController (Lớp xử lý)
   - Xử lý và điều phối quy trình tạo báo cáo.
   - Gửi yêu cầu đến lớp Project để lấy danh sách mã dự án nếu loại báo cáo cần mã dự án.
   - Gửi yêu cầu đến lớp Report để tạo báo cáo dựa trên tiêu chí được cung cấp và lưu trữ báo cáo nếu nhân viên chọn lưu.
+
 Project (Lớp thực thể dự án)
   - Cung cấp danh sách mã dự án từ Cơ sở Dữ liệu Quản lý Dự án, để hỗ trợ việc tạo báo cáo "Total Hours Worked for a Project".
+
 Report (Lớp thực thể báo cáo)
   - Tạo dữ liệu báo cáo dựa trên tiêu chí được cung cấp từ ReportController.
   - Lưu báo cáo đến tên và vị trí được chỉ định khi ReportController yêu cầu lưu.
 # Phân tích ca sử dụng Maintain Employee Information 
-1. 
+1. Mô tả ngắn gọn
+
+Ca sử dụng "Maintain Employee Information" cho phép Payroll Administrator (Quản trị viên Lương) thực hiện các thao tác duy trì thông tin nhân viên như: thêm mới, cập nhật, và xóa. Payroll Administrator sẽ chọn hành động muốn thực hiện (thêm, cập nhật, hoặc xóa). Hệ thống sẽ hướng dẫn để nhập thông tin cần thiết, xác nhận và lưu lại thông tin.
+
+2. Các lớp phân tích
+  - Actor: PayrollAdministrator
+  - Boundary class: EmployeeUI 
+  - Control Class: EmployeeController 
+  - Entity Class: Employee 
+
+3. Biều đồ tuần tự
+![](https://www.planttext.com/api/plantuml/png/x5N1Ji904BtlLqmyIQ9-00S34MCua1W97x1qXxXnkrkdKqc_pOEVv2yu2uM2hL28YHT9QCgoxysRzwRTp_UFGSwQk4YTob-i1mevAfrm87ZK9GNdXYQrtkPCMXRLF1JUQ2hXFirSA15dOvK4px9pktIt_ksG57gsN6zMgeqKhcztwFemZOhWOgAjP_bk_uEnNmHADTlWBrIDYFWstZuyKaWp1a61z2Gmk1mQSmMpp6Z6AnYXGyPUDrMoD-6AHodj68GBTArFWNnEb8MRtWnAhovVSNIHS-yPct2uz3gLnhZCv8gStFHQL3M3YkrvqwwckNkNemztX68cU5pMUC8aaDc3_rJu0JrI9DY2nwCETQC78vjdJfVxfR-X3-KmVGxB1bYXox6Qa5zBjn9rHh2jxRJv-8Il1UPS8wqyBJ0lkzaPyKmMtt2Ve5E40Yt87m0UZx29xU9LbTB1iJqoyiMAuipH_rx_XB6N-uMbjAfVJTtwVVG_TNyoTIlladKigpEcitcRB4sCRmCyxjqUh7QWasyJJI-r_AXyMrmENQFKGAxnLFy2003__mC0)
+4. Nhiệm Vụ của Từng Lớp
+
+PayrollAdministrator (Quản trị viên Lương)
+  - Tương tác với giao diện người dùng để thêm, cập nhật, hoặc xóa thông tin nhân viên.
+  - Nhập thông tin nhân viên mới, xác nhận việc xóa nhân viên, và thực hiện các chỉnh sửa cần thiết.
+
+EmployeeUI (Lớp giao diện người dùng)
+  - Hiển thị các lựa chọn thao tác (Thêm, Cập nhật, Xóa) cho Payroll Administrator.
+  -Nhận thông tin nhân viên từ Payroll Administrator để thêm mới hoặc cập nhật.
+  - Xác nhận thao tác xóa nhân viên với Payroll Administrator.
+  - Hiển thị ID nhân viên mới hoặc thông tin cập nhật cho Payroll Administrator.
+
+EmployeeController (Lớp điều khiển)
+  - Xử lý và điều phối yêu cầu thêm, cập nhật, hoặc xóa thông tin nhân viên từ EmployeeUI.
+  - Gửi yêu cầu tới lớp Employee để tạo, truy xuất, cập nhật, hoặc đánh dấu nhân viên cần xóa.
+  - Truyền thông tin hoặc xác nhận về trạng thái nhân viên đến EmployeeUI.
+
+Employee (Lớp thực thể nhân viên)
+  - Tạo và lưu trữ thông tin nhân viên mới, bao gồm việc sinh mã ID độc nhất.
+  - Truy xuất thông tin nhân viên để hiển thị cho Payroll Administrator trong quá trình cập nhật hoặc xóa.
+  - Cập nhật các chi tiết nhân viên khi cần.
+  - Đánh dấu nhân viên cần xóa để hệ thống trả lương cuối cùng trước khi xóa khỏi hệ thống.
