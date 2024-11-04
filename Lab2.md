@@ -285,4 +285,68 @@ Controller: PayrollController: Điều khiển toàn bộ quá trình chạy b�
   - Payroll: Thực hiện các phép tính cho lương ròng và áp dụng các khoản khấu trừ hợp pháp.
   - BankTransaction: Xử lý giao dịch ngân hàng cho các khoản thanh toán qua chuyển khoản.
 
-5. 
+5.Biểu đồ lớp
+
+a) Các lớp phân tích và nhiệm vụ của từng lớp
+
+PayrollUI
+  - Nhiệm vụ: Giao diện người dùng để khởi tạo quá trình chạy bảng lương và hiển thị trạng thái hoặc kết quả.
+  - Phương thức:
+    + runPayroll(): Gửi yêu cầu chạy bảng lương tới PayrollController.
+    + printPaycheck(empInfo: Employee, netPay: Float): In phiếu lương cho nhân viên.
+    + displayPayrollStatus(status: String): Hiển thị trạng thái quá trình chạy bảng lương.
+
+PayrollController
+  - Nhiệm vụ: Điều phối toàn bộ quá trình chạy bảng lương, bao gồm lấy danh sách nhân viên, tính toán lương, và xử lý thanh toán.
+  - Phương thức:
+    + runPayroll(): Quản lý toàn bộ quá trình chạy bảng lương.
+    + getEligibleEmployees(): List<Employee>: Lấy danh sách nhân viên đủ điều kiện nhận lương.
+    + processEmployeePay(employee: Employee): Tính toán và xử lý thanh toán cho từng nhân viên.
+    + markForDeletionIfNeeded(employee: Employee): Đánh dấu xóa nhân viên nếu cần.
+
+Employee
+  - Nhiệm vụ: Lưu trữ thông tin chi tiết của từng nhân viên và cung cấp các phương thức liên quan đến nhân viên.
+  - Thuộc tính:
+    + employeeId: String
+    + salary: Float
+    + paymentMethod: String
+    + markedForDeletion: Boolean
+  - Phương thức:
+    + isEligibleForPayroll(currentDate: Date): Boolean: Kiểm tra điều kiện nhận lương.
+    + getPaymentDetails(): Payment: Lấy thông tin thanh toán của nhân viên.
+
+Timecard
+  - Nhiệm vụ: Quản lý và cung cấp dữ liệu về giờ làm việc của nhân viên.
+  - Thuộc tính:
+    + employeeId: String
+    + hoursWorked: Float
+    + date: Date
+  - Phương thức:
+    + getHours(employeeId: String): Float: Lấy số giờ làm việc của nhân viên.
+
+Payroll
+  - Nhiệm vụ: Thực hiện các phép tính chi tiết cho quá trình chạy bảng lương.
+  - Phương thức:
+    + calculateNetPay(empInfo: Employee, hoursWorked: Float): Float: Tính lương ròng.
+    + applyDeductions(empInfo: Employee): Float: Áp dụng các khoản khấu trừ hợp pháp.
+
+BankTransaction 
+  - Nhiệm vụ: Xử lý giao dịch ngân hàng cho các khoản thanh toán qua chuyển khoản.
+  - Thuộc tính:
+    + transactionId: String
+    + amount: Float
+  - Phương thức:
+    + processTransaction(empInfo: Employee, netPay: Float): Boolean: Thực hiện giao dịch ngân hàng.
+
+b) Quan hệ giữa các lớp
+  - PayrollUI giao tiếp với PayrollController để khởi tạo quá trình chạy bảng lương và nhận trạng thái từ quá trình.
+  - PayrollController tương tác với Employee để lấy danh sách nhân viên đủ điều kiện nhận lương.
+  - PayrollController sử dụng Timecard để lấy dữ liệu giờ làm việc của từng nhân viên.
+  - PayrollController gọi Payroll để tính toán lương ròng cho từng nhân viên.
+  - PayrollController tương tác với BankTransaction nếu phương thức thanh toán của nhân viên là chuyển khoản trực tiếp.
+  - PayrollController tương tác lại với Employee để đánh dấu xóa nhân viên nếu cần thiết sau khi xử lý lương.
+
+c) Biểu đồ lớp phân tích
+![](https://www.planttext.com/api/plantuml/png/X9JFYjim4CRlUWeTRMXUG9HbsMQN1jgbi5jwdbgpYOWi6OsqO4gVh8S-Kb-XactPZXsJ76BpUURJR_xO__xylISFpeTQCpehmvqbP9K68luDMcUr_dxWlnXFFnVCe1LbhpHE6H-rweJLkS2wEPWtA_XZtMZR8dxW1jDZmP-q1JyaIKMDXdQmUl7W0nNKNGH_yT7oMBBVx9BYapK-NT5jqnpHFsfrL3yrPW8gIi6_AF8VitANoMs5H5cDJWc_kv_u1zyQtFd9kZrgzCgQmzipeaHvDM7apjA0kyl11vcBx7K23Ivtg9SQQ6iq_Ylwarr49nIKCnZ17wpL2AP7LPGx46DoUwhWNFJRWu-ewRzSP1sxAQKpz-X1wQvhWp9LzAfghC39MnMTR73qmoRGYxBaUFvuwkSKMgoDofouN8Cy_0fq5NIqUkxGhwtU6gESut1e6jtkKOOgzP7M5ck81p3dLmU6eCl9ZV2JjEm5r3OOVt7ki7apdzilpZIlo3AzbxlTtPNtGt1bb5UnESJMJrFEk9k2Euoq-BuPEWvTy42RKNaw8bUt6RbiuHoMZLnRXKNtToMHUDmbO2FRpV3PBcIkpQJOaU0C3HDWI-1RQRDbw3zjx1wDJD_N_m000F__0m00)
+
+# Phân tích biểu đò
