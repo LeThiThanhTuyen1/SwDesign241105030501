@@ -259,4 +259,30 @@ b) Quan hệ giữa các lớp
 c) Biểu đồ lớp phân tích
 ![](https://www.planttext.com/api/plantuml/png/X5D1JiCm4Bpx5Nk4GpyGeQf81QaI84JX0TjusreuTl2kGH7YPHnu4b_0QPCsk2taaCFCP7TsT_Bz-JLXmI2niegVZOFWcLHfaHdkiGdUsajT6MTO0eeFyAuWFIF08JgR5c2ST9J3YWgOIp1kjO40c2oLSXrTASQxi_C2NhtHwaDrhQwgslg6w1OThcZVXJhy9dKge7rVzD9nLngrxg5TtIqJQur29qYT71qX3nmTMFbdrhtmiQbpAdaDn9oXx4k3Tavb34QQkrWjA6IIUkqT7MKOBOQc0EtZmb87hdqCjdb8q_yY05Oa_M0pj_JPJlW4Ux2KfzbkBTlBakvlczapheuoHS4i4DfmRR7vmmmveT3pROMCBxrRcb1DspjccJeQtD5eFFI_EI85B8NXpSXQ3RYXj4za0O5U8d6IusPGLhba-5dILnkO8OKGbPgGq-rFzWC00F__0m00)
 
-# Phân tích ca sử dụng 
+# Phân tích ca sử dụng Run Payroll
+1. Mô tả ngắn gọn
+
+Ca sử dụng "Run Payroll" mô tả quá trình hệ thống tự động xử lý bảng lương cho nhân viên vào mỗi thứ Sáu và ngày làm việc cuối cùng của tháng. Hệ thống sẽ tính toán tiền lương dựa trên các thông tin liên quan như thời gian làm việc, đơn hàng, thông tin nhân viên và các khoản khấu trừ hợp pháp. Hệ thống sẽ in phiếu lương nếu phương thức thanh toán là thư hoặc nhận trực tiếp, hoặc tạo giao dịch ngân hàng nếu là chuyển khoản trực tiếp.
+
+2. Các lớp phân tích
+  - Boundary: PayrollUI: Đại diện cho giao diện hệ thống để hiển thị kết quả và trạng thái quá trình tính lương.
+  - Entity:
+    + Employee: Chứa thông tin về nhân viên, bao gồm mức lương, giờ làm, các khoản khấu trừ, và phương thức thanh toán.
+    + Timecard: Lưu trữ thời gian làm việc của từng nhân viên, được sử dụng để tính lương.
+    + Payroll: Thực hiện tính toán lương cho nhân viên dựa trên thông tin từ Employee và  Timecard.
+    + BankTransaction: Đại diện cho giao dịch ngân hàng để xử lý các khoản lương qua phương thức chuyển khoản.
+
+Controller: PayrollController: Điều khiển toàn bộ quá trình chạy bảng lương, từ việc lấy danh sách nhân viên, tính toán lương, đến việc in phiếu lương hoặc tạo giao dịch ngân hàng.
+
+3. Biểu đồ tuần tự
+![](https://www.planttext.com/api/plantuml/png/T5D1ReCm4Bpx5IjEYTHyW4CLGLALGwD89UhPDKknC3QobqFUraEVr2zqJKAIbfG3icTdTeR5_lxyMWUIdeREYD1g2zu555AHyx2NH--CEHGW0nmAePmb1YOyFsqD-bY_xWHQqdI4RTSRTqICLLvFSAaxLD9N4Ixp2JttZ20l9pIJjYszj843QMTZDIk5u4Ihnnl75FnWpnqMIt4JZ6bidS87qjRe3_rkS8eLcCbhMFrfPNGWS3NWcGyu2OHnheUQ9uDIDHTS03-_FSjyj7nsWm-BYLTKov5QvZFF9XBVd6-nkjEDlom59OqQZ2JS8J4GknQsTW-tsbD_hiuCx2WQoz9Gf7GyOkYG6bU13f1ij4T5iC7U1Kt9I9r7oSeKUkyKXd3pNwvXJZxBYpehPr7egdibIKCOoMW2telr8hL9W4UUxBLgLqF_Nx934PDf6_rLWwgz7mhjlGcFPwIJldroVeC6OxYYtY5MMF4nYQ8rl-8b-G400F__0m00)
+4. Nhiệm vụ của từng lớp
+
+  - PayrollUI: Khởi tạo quá trình xử lý bảng lương và hiển thị trạng thái hoặc kết quả cho người dùng.
+  - PayrollController: Điều phối toàn bộ quy trình chạy bảng lương, lấy danh sách nhân viên, tính toán và thực hiện thanh toán dựa trên phương thức đã chọn.
+  - Employee:Đại diện cho từng nhân viên và lưu trữ các thông tin chi tiết như mức lương, phương thức thanh toán và trạng thái xóa.
+  - Timecard: Quản lý giờ làm việc của từng nhân viên để cung cấp dữ liệu tính lương.
+  - Payroll: Thực hiện các phép tính cho lương ròng và áp dụng các khoản khấu trừ hợp pháp.
+  - BankTransaction: Xử lý giao dịch ngân hàng cho các khoản thanh toán qua chuyển khoản.
+
+5. 
