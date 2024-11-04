@@ -349,4 +349,62 @@ b) Quan hệ giữa các lớp
 c) Biểu đồ lớp phân tích
 ![](https://www.planttext.com/api/plantuml/png/X9JFYjim4CRlUWeTRMXUG9HbsMQN1jgbi5jwdbgpYOWi6OsqO4gVh8S-Kb-XactPZXsJ76BpUURJR_xO__xylISFpeTQCpehmvqbP9K68luDMcUr_dxWlnXFFnVCe1LbhpHE6H-rweJLkS2wEPWtA_XZtMZR8dxW1jDZmP-q1JyaIKMDXdQmUl7W0nNKNGH_yT7oMBBVx9BYapK-NT5jqnpHFsfrL3yrPW8gIi6_AF8VitANoMs5H5cDJWc_kv_u1zyQtFd9kZrgzCgQmzipeaHvDM7apjA0kyl11vcBx7K23Ivtg9SQQ6iq_Ylwarr49nIKCnZ17wpL2AP7LPGx46DoUwhWNFJRWu-ewRzSP1sxAQKpz-X1wQvhWp9LzAfghC39MnMTR73qmoRGYxBaUFvuwkSKMgoDofouN8Cy_0fq5NIqUkxGhwtU6gESut1e6jtkKOOgzP7M5ck81p3dLmU6eCl9ZV2JjEm5r3OOVt7ki7apdzilpZIlo3AzbxlTtPNtGt1bb5UnESJMJrFEk9k2Euoq-BuPEWvTy42RKNaw8bUt6RbiuHoMZLnRXKNtToMHUDmbO2FRpV3PBcIkpQJOaU0C3HDWI-1RQRDbw3zjx1wDJD_N_m000F__0m00)
 
-# Phân tích biểu đò
+# Phân tích biểu đồ Select Payment Method
+1. Mô tả ngắn gọn
+
+Ca sử dụng này cho phép Nhân viên chọn một phương thức thanh toán. Phương thức thanh toán sẽ quyết định cách Nhân viên nhận lương. Nhân viên có thể chọn một trong ba phương thức: nhận séc trực tiếp, nhận séc qua đường bưu điện, hoặc nhận lương qua chuyển khoản trực tiếp vào tài khoản ngân hàng đã đăng ký.
+
+2. Các lớp phân tích
+  - Boundary Class: PaymentUI
+  - Controller Class: PaymentController
+  - Entity Class: Employee, EmployeePayment
+3. Biểu đồ tuần tự
+![](https://www.planttext.com/api/plantuml/png/b5JBQjmm5DthAowppmy4N492eQLfo2A5TkdnY94OMpAs7EfbwQAKKEZGHRVZXb8QMff2L_PY5XhcF_G5_OLUoKxzcCaaySB6L-UUSy-nvB_LyY1LVgAoA2JfZ0j8P4g97oYPmECe3cLEAVWfK4B6CXCJFydXrCyZAjIBftOXuoIGGYKolAaVrQyXJUnwe9AGO9Mhl4yOnSDoq-zMOpydXCBU8nI0VJWqvIy5gxaflsKGC5Dz412pzVMw45DG-Fuzm8Sl62Yf2q6m2LkjDZQ_qbVOTDzMueSAJWU0aM2c_2b09QRwZNXkocKy8e2N4q4nEpAA7I4k1WTN4DUEdbF5v0IyssXecD9DoV7wEaFBt5JlH5_AHT9nvLXZ6qzruJkFxns-Je4Y-6GJ0Lr-1s_ZNdtSXUk5UvPakQdUY3ku7vHIppcSwmM4TQNZRtjc0RFJl1KmOzAKb_VBJJ7zntBWxXTJ_KK0qmintPwWqbSzb9ikDTKSLnRyHdOGvzbT0iCiTqpqe20tucZ3l4M2YWaX0urZYzzrP1okjV5I5m4qEtqrrvSsxVz3ajx7Q98PwqBQYHP86TWAQOD_mfq3Ati1hrjgGZmFZZDJVN93uGG8APVxyAnnfdz4hlGrxvbbrkmvjz_HyznXF-cKPWtIqkAzBFZc3kfD59hgCuVH5j6EqgZEzG3lzaVx3m00__y30000)
+4. Nhiệm vụ của từng lớp phân tích
+PaymentUI
+  - Hiển thị các tùy chọn phương thức thanh toán cho nhân viên (nhận trực tiếp, bưu điện, chuyển khoản).
+  - Nhận thông tin đầu vào từ nhân viên, như địa chỉ bưu điện (khi chọn phương thức bưu điện) hoặc thông tin ngân hàng (khi chọn phương thức chuyển khoản).
+  - Hiển thị thông báo xác nhận hoặc lỗi cho nhân viên sau khi xử lý.
+PaymentController
+  - Nhận yêu cầu chọn phương thức thanh toán từ PaymentUI.
+  - Kiểm tra và yêu cầu thông tin bổ sung nếu cần, dựa trên phương thức thanh toán được chọn (ví dụ, yêu cầu địa chỉ bưu điện hoặc thông tin ngân hàng).
+  - Tương tác với lớp EmployeePayment để lưu thông tin phương thức thanh toán đã chọn.Truyền kết quả cập nhật thành công hoặc thông báo lỗi về PaymentUI.
+Employee
+  - Lưu trữ thông tin cơ bản của nhân viên, cần thiết để xác định danh tính khi chọn phương thức thanh toán.
+  - Cung cấp các phương thức cần thiết để lấy thông tin nhân viên và kiểm tra tính hợp lệ của nhân viên.
+EmployeePayment
+  - Lưu trữ thông tin về phương thức thanh toán mà nhân viên đã chọn.
+  - Lưu các thông tin bổ sung, như địa chỉ (với phương thức bưu điện) hoặc tên ngân hàng và số tài khoản (với phương thức chuyển khoản).
+  - Cung cấp các phương thức để cập nhật và xác nhận thông tin thanh toán đã chọn.
+5. Phân tích các lớp
+a) Thuộc tính của từng lớp
+PaymentUI (Boundary Class):
+  - selectedMethod: Chuỗi biểu thị phương thức thanh toán đã chọn ("pick up", "mail", hoặc "direct deposit").
+  - address: Chuỗi chứa địa chỉ, nếu phương thức thanh toán là "mail".
+  - bankName: Chuỗi tên ngân hàng, nếu phương thức thanh toán là "direct deposit".
+  - accountNumber: Chuỗi chứa số tài khoản, nếu phương thức thanh toán là "direct deposit".
+PaymentController (Control Class):
+  - employee: Đối tượng Employee đại diện cho nhân viên thực hiện lựa chọn.
+  - payment: Đối tượng EmployeePayment đại diện cho thông tin thanh toán của nhân viên.
+Employee (Entity Class):
+  - employeeId: ID duy nhất của nhân viên.
+  - name: Tên nhân viên.
+  - position: Chức vụ của nhân viên.
+EmployeePayment (Entity Class):
+  - paymentMethod: Chuỗi phương thức thanh toán ("pick up", "mail", hoặc "direct deposit").
+  - mailingAddress: Chuỗi địa chỉ nhận qua thư, nếu phương thức là "mail".
+  - bankName: Tên ngân hàng, nếu phương thức là "direct deposit".
+  - accountNumber: Số tài khoản ngân hàng, nếu phương thức là "direct deposit".
+  - status: Trạng thái thanh toán (có thể là "active", "pending", v.v.).
+b) Quan hệ giữa các lớp
+  - PaymentUI ↔ PaymentController: PaymentUI tương tác với PaymentController để gửi phương thức thanh toán được chọn và nhận lại kết quả xác nhận hoặc lỗi.
+  - PaymentController ↔ Employee: PaymentController có quan hệ với Employee để truy cập và xác minh thông tin nhân viên thực hiện lựa chọn phương thức thanh toán.
+  - PaymentController ↔ EmployeePayment: PaymentController cũng liên kết với EmployeePayment để cập nhật thông tin thanh toán mới và xác nhận phương thức thanh toán.
+
+c) Biểu đồ lớp
+![](https://www.planttext.com/api/plantuml/png/h9DDJiCm48NtEONLLI8r5-W22G6BB2X84GTmusbhrN_oE48HucGiE19Nm4cSD7P0RCWgyOpdVVDcylNnYHUkYDK8MICe8dccdGJbNYhobX7_b0H1GEE0FO8xQxOZjRDSdKAGCcO1CJazK7NPKmbfSjFeLhbzAmzWenWXZACHj0loJyPnhJ0lGlG4hWuO8MEaoOka39xrwvrMHsubxKlawAXhPxuYUy_YHdsoire8i7F388tG7NZwX_0M0cQySZqFDIRjWJ3cav5fKplDI1XIymNLL7a5KwNEgxM_HYFlcquyyUPDPU_1KIvmOTjAEK3D06RPJo8eVJ7_TVi_I-1NBHfMm6yDesx2gjHH9wPkqoNS3jAByAZuon3gGJDsvFeJbEND3vko8viM0JVPEjHVc8VeyxouH_ixTxAzBpqqx6zy0m00__y30000)
+d) Giải thích biểu đồ lớp
+  - PaymentUI: Đây là lớp giao diện, chứa các thuộc tính về phương thức thanh toán đã chọn và thông tin bổ sung như địa chỉ hoặc thông tin ngân hàng. PaymentUI chịu trách nhiệm thu thập đầu vào từ nhân viên và hiển thị kết quả sau khi PaymentController xử lý.
+  - PaymentController: Lớp điều khiển này quản lý quá trình xử lý chọn phương thức thanh toán. Nó chứa tham chiếu tới Employee (để truy xuất thông tin nhân viên) và EmployeePayment (để lưu thông tin thanh toán của nhân viên).
+  - Employee: Lớp này đại diện cho nhân viên đang thực hiện lựa chọn phương thức thanh toán, chứa các thuộc tính cơ bản của nhân viên như ID, tên, và chức vụ.
+  - EmployeePayment: Lớp lưu trữ thông tin thanh toán của nhân viên, bao gồm phương thức thanh toán và các thuộc tính liên quan. Lớp này kết nối với PaymentController để lưu trữ và quản lý thông tin thanh toán.
