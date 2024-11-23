@@ -82,3 +82,28 @@
 
 - **PayrollService** có thể chịu trách nhiệm chính cho tính toán và tương tác với **Printer** và **BankSystem**.
 - Đơn giản hóa giao tiếp giữa **PayrollService** và **SystemClock** bằng cách tích hợp module thời gian.
+
+## **III. Login**
+
+### **1. Biểu đồ ca sử dụng**
+![](https://www.planttext.com/api/plantuml/png/X9112i8m44NtESNGbLru0HTI5rqK58MY-o6Trc2Qo2GgHJoP2u_a5Kni4HJ5MGtyzpx3tA-tp7baVsYrS3jbWAqZWT9RXcJjY1D01t4HWabwD8qcI5ROiTKQoivvQXCu2mWJCHYFfp1Qxid0t3QXi32Uk4P9wGUJn-05rPPRzCgQL3ovdt4lRr2h2Zszcr7ixQzvhywa9EU6qrEOG573CU9_pN9hJv0pXzyiGWKsDEZAz0KN8J8oLNpc0m00__y30000)
+
+### **2. Giải thích**
+**Tên ca sử dụng**: Login
+
+**Tác nhân**: Nhân viên, Quản lý
+
+**Mô tả**: Tác nhân nhập tên đăng nhập và mật khẩu để truy cập hệ thống.
+
+**Tiền điều kiện**: Tác nhân đã có tài khoản trong hệ thống.
+
+**Luồng sự kiện chính**:
+  - Tác nhân mở giao diện đăng nhập.
+  - Tác nhân nhập tên đăng nhập và mật khẩu.
+  - Hệ thống kiểm tra tính hợp lệ của thông tin đăng nhập.
+    - Nếu thông tin hợp lệ, hệ thống cho phép truy cập.
+    - Nếu thông tin không hợp lệ, hệ thống thông báo lỗi và yêu cầu nhập lại.
+
+**Hậu điều kiện**: Tác nhân đăng nhập thành công và có quyền sử dụng hệ thống.
+
+**Lý do thiết kế**: Ca sử dụng này là cơ bản và cần thiết cho mọi hệ thống quản lý. Đăng nhập đảm bảo chỉ những người có quyền mới truy cập được hệ thống, đáp ứng yêu cầu về bảo mật và kiểm soát truy cập.
